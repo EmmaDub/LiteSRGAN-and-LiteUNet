@@ -57,6 +57,7 @@ class DataLoader():
                         batch_imgs_files = HR_images_path[current_batch_index:]
                         HR_imgs, LR_imgs = self.generate_HR_LR_images(batch_imgs_files)
                         last_batch = True
+                    print(LR_imgs, HR_imgs, last_batch)
                     yield (LR_imgs, HR_imgs, last_batch)
 
         HR_images_path = self.returnImagesDirectory()
