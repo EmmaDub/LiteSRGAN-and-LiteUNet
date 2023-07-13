@@ -31,8 +31,7 @@ args = parser.parse_args()
 dl = DataLoader(args)
 datagen=dl.dataGenerator()
 print('this is the data')
-data_slice = list(itertools.islice(datagen, 1))  # Retrieve the first 10 items
-print(data_slice)
+list(datagen(1))
 
 if not os.path.exists('models'):
     os.makedirs('models')
