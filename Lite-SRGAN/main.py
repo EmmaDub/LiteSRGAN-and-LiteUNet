@@ -30,7 +30,8 @@ args = parser.parse_args()
 # Initialize the dataloader object
 dl = DataLoader(args)
 datagen=dl.dataGenerator()
-
+print('this is the data')
+print(datagen)
 if not os.path.exists('models'):
     os.makedirs('models')
 if not os.path.exists('generatedTrails'):
