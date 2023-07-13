@@ -32,7 +32,8 @@ dl = DataLoader(args)
 datagen=dl.dataGenerator()
 print('this is the data')
 for item in datagen:
-    print(item)
+    lr_batch, hr_batch, last_batch = item
+    print(last_batch)  # Print the last_batch flag
 if not os.path.exists('models'):
     os.makedirs('models')
 if not os.path.exists('generatedTrails'):
