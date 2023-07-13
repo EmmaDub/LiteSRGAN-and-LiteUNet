@@ -3,7 +3,7 @@ from LiteSRGAN import LiteSRGAN,LiteSRGAN_engine
 import argparse
 import tensorflow as tf
 import os
-
+import itertools
 parser = argparse.ArgumentParser(description='light-SRGAN training script.')
 ## Arguments for Dataloader
 parser.add_argument('--images_dir',default=r"C:\Users\hosam\Downloads\TAs\Master's\Plant village dataset\tywbtsjrjv-1\Plant_leaf_diseases_dataset_without_augmentation\Plant_leave_diseases_dataset_without_augmentation"
@@ -31,9 +31,9 @@ args = parser.parse_args()
 dl = DataLoader(args)
 datagen=dl.dataGenerator()
 print('this is the data')
-for item in datagen:
-    lr_batch, hr_batch, last_batch = item
-    print(last_batch)  # Print the last_batch flag
+data_slice = list(itertools.islice(datagen, 1))  # Retrieve the first 10 items
+print(data_slice)
+
 if not os.path.exists('models'):
     os.makedirs('models')
 if not os.path.exists('generatedTrails'):
