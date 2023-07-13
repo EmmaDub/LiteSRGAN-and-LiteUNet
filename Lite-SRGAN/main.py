@@ -43,13 +43,17 @@ lite_SRGAN_engine=LiteSRGAN_engine(args,lite_SRGAN)
 
 
 # Run pre-training.
+print("Starting generator pre-training...")
 for i in range(args.pretraining_epochs):
+    print(f"Pre-training epoch {i+1}/{args.pretraining_epochs}")
     lite_SRGAN_engine.generator_pretraining(datagen,i)
 
 print("------------- End of generator pre-training -------------")
 
 # Run training.
+print("Starting training...")
 for i in range(args.epochs):
+    print(f"Training epoch {i+1}/{args.epochs}")
     lite_SRGAN_engine.train(datagen, 100, i)
     lite_SRGAN_engine.saveTrails(4,i)
-
+print("Training completed.")
