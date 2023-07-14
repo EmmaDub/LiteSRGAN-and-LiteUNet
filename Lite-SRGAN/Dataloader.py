@@ -65,11 +65,3 @@ class DataLoader():
         HR_images_path = self.returnImagesDirectory()
         datagen=_generateBatches(HR_images_path)
         return datagen
-        
-    def is_generator_empty(generator):
-        try:
-            next(generator)
-            return False  # Generator has at least one item
-        except StopIteration:
-            return True  # Generator is empty
-
