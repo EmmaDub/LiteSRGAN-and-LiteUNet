@@ -4,6 +4,13 @@ import argparse
 import tensorflow as tf
 import os
 import itertools
+
+def is_generator_empty(generator):
+    try:
+        next(generator)
+        return False  # Generator has at least one item
+    except StopIteration:
+        return True  # Generator is empty
 parser = argparse.ArgumentParser(description='light-SRGAN training script.')
 ## Arguments for Dataloader
 parser.add_argument('--images_dir',default=r"C:\Users\hosam\Downloads\TAs\Master's\Plant village dataset\tywbtsjrjv-1\Plant_leaf_diseases_dataset_without_augmentation\Plant_leave_diseases_dataset_without_augmentation"
@@ -30,8 +37,11 @@ args = parser.parse_args()
 # Initialize the dataloader object
 dl = DataLoader(args)
 datagen=dl.dataGenerator()
-print('this is the data')
-list(datagen(1))
+
+if is_generator_empty(datagen):
+    print("Generator is empty.")
+else:
+    print("Generator is not empty.")
 
 if not os.path.exists('models'):
     os.makedirs('models')
