@@ -30,7 +30,7 @@ args = parser.parse_args()
 # Initialize the dataloader object
 dl = DataLoader(args)
 datagen=dl.dataGenerator()
-
+print('generator object')
 if is_generator_empty(datagen):
     print("Generator is empty.")
 else:
