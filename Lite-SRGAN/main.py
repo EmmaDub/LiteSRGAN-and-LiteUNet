@@ -27,6 +27,13 @@ parser.add_argument('--generator_weights', default=None, type=str, help='generat
 parser.add_argument('--discriminator_weights', default=None, type=str, help='discriminator weights path if you want to finetune your discriminator model')
 args = parser.parse_args()
 
+def is_generator_empty(generator):
+    try:
+        next(generator)
+        return False  # Generator has at least one item
+    except StopIteration:
+        return True  # Generator is empty
+
 # Initialize the dataloader object
 dl = DataLoader(args)
 datagen=dl.dataGenerator()
