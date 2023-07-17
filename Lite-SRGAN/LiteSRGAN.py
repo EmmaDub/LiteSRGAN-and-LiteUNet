@@ -431,7 +431,8 @@ class LiteSRGAN_engine():
         print("------------- pre-training epoch {} -------------".format(epoch_num))
         pretrain_iterations = 0
         #for lr, hr, last_batch in data:
-        for i in data:  
+        for i in data:
+            print('test')
             print("iteration num = {}".format(pretrain_iterations))
             with tf.GradientTape() as tape:
                 sr = self.model.generator(lr)
