@@ -61,5 +61,5 @@ class DataLoader():
     
         HR_images_path = self.returnImagesDirectory()
         datagen=_generateBatches(HR_images_path)
-        HR_imgs = hr_img
+        hr_img = HR_imgs
         return hr_img, datagen
