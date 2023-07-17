@@ -3,7 +3,7 @@ from LiteSRGAN import LiteSRGAN,LiteSRGAN_engine
 import argparse
 import tensorflow as tf
 import os
-import itertools
+
 parser = argparse.ArgumentParser(description='light-SRGAN training script.')
 ## Arguments for Dataloader
 parser.add_argument('--images_dir',default=r"C:\Users\hosam\Downloads\TAs\Master's\Plant village dataset\tywbtsjrjv-1\Plant_leaf_diseases_dataset_without_augmentation\Plant_leave_diseases_dataset_without_augmentation"
@@ -27,21 +27,9 @@ parser.add_argument('--generator_weights', default=None, type=str, help='generat
 parser.add_argument('--discriminator_weights', default=None, type=str, help='discriminator weights path if you want to finetune your discriminator model')
 args = parser.parse_args()
 
-#def is_generator_empty(generator):
-    #try:
-        #next(generator)
-        #return False  # Generator has at least one item
-    #except StopIteration:
-        #return True  # Generator is empty
-
 # Initialize the dataloader object
 dl = DataLoader(args)
 datagen=dl.dataGenerator()
-print('generator object')
-#if is_generator_empty(datagen):
-    #print("Generator is empty.")
-#else:
-    #print("Generator is not empty.")
 
 if not os.path.exists('models'):
     os.makedirs('models')
@@ -55,12 +43,12 @@ lite_SRGAN_engine=LiteSRGAN_engine(args,lite_SRGAN)
 
 
 # Run pre-training.
-#print("Starting generator pre-training...")
-#for i in range(args.pretraining_epochs):
-    #print(f"Pre-training epoch {i+1}/{args.pretraining_epochs}")
-    #lite_SRGAN_engine.generator_pretraining(datagen,i)
+print("Starting generator pre-training...")
+for i in range(args.pretraining_epochs):
+    print(f"Pre-training epoch {i+1}/{args.pretraining_epochs}")
+    lite_SRGAN_engine.generator_pretraining(datagen,i)
 
-#print("------------- End of generator pre-training -------------")
+print("------------- End of generator pre-training -------------")
 
 # Run training.
 print("Starting training...")
