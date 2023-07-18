@@ -533,7 +533,7 @@ class LiteSRGAN_engine():
                 disc_loss_list.clear()
                 adv_loss_list.clear()
                 perceptual_loss_list.clear()
-                mse_loss_list.clear()
+                pixel_loss_list.clear()
                 style_loss_list.clear()
 
                 break
