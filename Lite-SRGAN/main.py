@@ -30,6 +30,7 @@ args = parser.parse_args()
 # Initialize the dataloader object
 dl = DataLoader(args)
 hr_img, lr_img, datagen=dl.dataGenerator()
+print('HR image')
 print(hr_img)
 
 if not os.path.exists('models'):
