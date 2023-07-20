@@ -461,10 +461,10 @@ class LiteSRGAN_engine():
             disc_sr_prediction = self.model.discriminator(sr)  # Shape :(batch size,16,16,1)
 
             # The weight for each loss can be tuned for controlling the contribution of each loss to the total loss function
-            perceptual_loss = 0.065 * self.model.PerceptualLoss(hr, sr,criterion="l2")
-            adv_loss = 1e-3 * self.model.AdversarialLoss(disc_sr_prediction)
-            pixel_loss = 0.2 * self.model.PixelLoss(hr, sr,criterion="l1")
-            style_loss = 2e-7 * self.model.StyleLoss(hr, sr,criterion="l2")
+            perceptual_loss = 1 * self.model.PerceptualLoss(hr, sr,criterion="l2")
+            adv_loss = 1 * self.model.AdversarialLoss(disc_sr_prediction)
+            pixel_loss = 1 * self.model.PixelLoss(hr, sr,criterion="l1")
+            style_loss = 1 * self.model.StyleLoss(hr, sr,criterion="l2")
 
 
             total_loss = perceptual_loss + adv_loss + pixel_loss + style_loss
