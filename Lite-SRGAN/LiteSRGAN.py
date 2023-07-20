@@ -15,7 +15,6 @@ from keras.models import Sequential
 from keras.losses import BinaryCrossentropy,MeanSquaredError,MeanAbsoluteError
 from tensorflow.keras.optimizers.schedules import PiecewiseConstantDecay
 from keras import optimizers
-import matplotlib.pyplot as plt
 
 
 class LiteSRGAN():
@@ -351,9 +350,6 @@ class LiteSRGAN():
             # propagate through the remaining upsample blocks
             for i in range(self.upsamplingblocks-1):
                 u= _upsample_block(u)
-                plt.imshow(u[0].numpy())
-                plt.title("Image après étape {}".format(i+1))
-                plt.show()
             out_hr = keras.layers.Conv2D(3, kernel_size=3, strides=1, padding='same', activation='tanh')(u)
             generator_model = keras.models.Model(input_lr, out_hr)
             if self.generator_weights:
