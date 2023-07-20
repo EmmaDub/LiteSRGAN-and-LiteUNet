@@ -106,7 +106,7 @@ def VGG19(
     # Determine proper input shape
     input_shape = imagenet_utils.obtain_input_shape(
         input_shape,
-        default_size=224,
+        default_size=1024,
         min_size=32,
         data_format=backend.image_data_format(),
         require_flatten=include_top,
